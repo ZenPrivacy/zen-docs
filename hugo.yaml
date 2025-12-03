@@ -1,5 +1,5 @@
 # Hugo configuration file
-title: My Site
+title: Zen Documentation
 
 # import hextra as module
 module:
@@ -25,7 +25,7 @@ menu:
       pageRef: /about
       weight: 2
     - name: Contact ↗
-      url: "https://github.com/imfing"
+      url: "mailto:contact@irbis.sh"
       weight: 3
     - name: Search
       weight: 4
@@ -33,24 +33,35 @@ menu:
         type: search
     - name: GitHub
       weight: 5
-      url: "https://github.com/imfing/hextra-starter-template"
+      url: "https://github.com/ZenPrivacy"
       params:
         icon: github
-    - name: Twitter
+    - name: Bluesky
       weight: 6
-      url: "https://twitter.com/"
+      url: "https://bsky.app/profile/zen.irbis.sh"
       params:
-        icon: x-twitter
+        icon: bluesky
+    - name: Discord
+      weight: 7
+      url: "https://discord.gg/jSzEwby7JY"
+      params:
+        icon: discord
 
 params:
   navbar:
-    displayTitle: true
-    displayLogo: false
+    displayTitle: false
+    displayLogo: true
+    logo:
+      path: images/logo-black.svg
+      dark: images/logo-white.svg
+      link: /
+      width: 68
+      height: 24
 
   footer:
-    displayCopyright: false
-    displayPoweredBy: true
+    displayCopyright: true
+    displayPoweredBy: false
 
   editURL:
     enable: true
-    base: "https://github.com/imfing/hextra-starter-template/edit/main/content"
+    base: "https://github.com/ZenPrivacy/zen-docs/edit/master/content"
