@@ -1,0 +1,19 @@
+version: '3'
+
+tasks:
+  default:
+    desc: Runs the dev task.
+    cmds:
+      - task: dev
+
+  dev:
+    desc: Runs Hugo in development mode.
+    cmds:
+      - rm -rf public
+      - hugo server
+
+  build:
+    desc: Builds the site for production.
+    cmds:
+      - rm -rf public
+      - hugo --minify
