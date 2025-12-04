@@ -14,6 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: sudo apt update && sudo apt install -y lftp
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@75d2e84710de30f6ff7268e08f310b60ef14033f # v3.0.0
         with:
@@ -22,9 +25,6 @@ jobs:
       - name: Build site
         run: hugo --minify
 
-      - name: Install lftp
-        run: sudo apt update && sudo apt install -y lftp
-
       - name: Upload to FTP
         run: |
-          lftp -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} -e "mirror -R --delete --only-newer --parallel=4 public; bye" sftp://${{ secrets.FTP_HOST }}
+          lftp -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} -e "mirror -R --delete --only-newer --parallel=4 public; bye" ${{ secrets.FTP_HOST }}
