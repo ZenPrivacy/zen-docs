@@ -1,0 +1,22 @@
+name: Publish to FTP
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: sudo apt update && sudo apt install -y lftp
+
+      - name: Upload to FTP
+        run: |
+          lftp -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} -e "mirror -R --delete --only-newer --parallel=4 public /; bye" ${{ secrets.FTP_HOST }}
