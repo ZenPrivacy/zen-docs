@@ -27,4 +27,4 @@ jobs:
 
       - name: Upload to FTP
         run: |
-          lftp -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} -e "mirror -R --delete --only-newer --parallel=4 public /; bye" ${{ secrets.FTP_HOST }}
+          lftp -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} -e "mirror -R --delete --only-newer --parallel=4 public; bye" sftp://${{ secrets.FTP_HOST }}
