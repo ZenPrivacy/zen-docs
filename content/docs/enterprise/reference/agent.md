@@ -41,12 +41,18 @@ Some hostnames are automatically excluded from proxying due to security or compa
 
 {{< tabs items="Windows,macOS,Linux" >}}
   {{< tab >}}
-    To instruct applications to use the proxy, the agent modifies the following Registry values under `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings`:
+    To instruct applications to use the proxy, the agent modifies the following Registry values:
+    
+    `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings`:
     - `ProxySettingsPerUser` set to `0`.
+
+    `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Internet Settings`:
     - `ProxyEnable` set to `0`.
     - `ProxyOverride` deleted.
     - `ProxyServer` deleted.
     - `AutoConfigURL` set to the local PAC URL.
+
+    When the service shuts down or is uninstalled, all of these values are deleted.
   {{< /tab >}}
   {{< tab >}}
     The macOS agent is a work in progress.
